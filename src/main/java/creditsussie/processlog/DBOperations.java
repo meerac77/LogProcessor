@@ -20,13 +20,14 @@ public class DBOperations {
 		createConnection();
 	}
 
-	public void writeToDB(List<ProcessedLogObject> procList) {
+	public boolean writeToDB(List<ProcessedLogObject> procList) {
 		createTable();
 		for (ProcessedLogObject procObj : procList) {
 			insertTable(procObj);
 		}
 		logger.info("Inserted " + procList.size() + " rows!");
 		closeConnection();
+		return true;
 	}
 
 	private void createConnection() {
